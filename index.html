@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+				<title>Maintenance Task</title>
+
+	<script type="text/x-handlebars" data-template-name="level-items">
+		{{#each view.items}}
+		 {{view App.ItemView}}
+		{{/each}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="itemtest">
+		{{view.context.name}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="item">
+		{{#with view.context}}
+		{{#if enabled}}
+			{{name}}<br>
+			{{else}}
+			{{name}}
+			{{/if}}
+			<span class="badge">{{hits}}</span>
+		{{/with}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="edit">
+			<label>Name</label><input {{bindAttr value="view.task.name"}} name="name" type="text" width="3"><br>
+			{{#with view.task}}
+				<label>TimeSpan</label>{{view view.timeSpan timespan=timespan}}<br>
+			{{/with}}
+			<label>limit</label><input {{bindAttr value="view.task.limit"}} name="limit" type="text"><br>
+			<input type="submit">
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="main">
+		{{#view App.MyView}}
+		{{view App.LevelView itemsBinding="App.Level1"}}
+		{{view App.LevelView itemsBinding="App.Level2"}}
+		{{view App.LevelView itemsBinding="App.Level3"}}
+		{{/view}}
+
+		{{view App.EditView}}
+
+	</script>
+</head>
+
+
+		<body>
+        <div class="app">
+
+				</div>
+
+				<div id="App"></div>;
+
+        <script type="text/javascript" src="cordova-2.0.0.js"></script>
+				<script src="js/jquery-1.7.2.min.js"></script>
+				<script src="js/handlebars-1.0.0.beta.6.js"></script>
+				<script src="js/ember-1.0.pre.min.js"></script>
+				<script src="js/app.js"></script>
+        <script type="text/javascript">
+            //app.initialize();
+        </script>
+    </body>
+</html>
